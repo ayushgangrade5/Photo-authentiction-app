@@ -1,0 +1,39 @@
+/* Custom styles for the navbar */
+.navbar-toggler {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  
+}
+
+.navbar-items {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar-items .nav-link {
+  color: rgb(1, 1, 1);
+  text-decoration: dashed;
+  font-size: 1rem;
+}
+
+/* Optional: You can customize this further if needed */
+@media (max-width: 768px) {
+  .navbar-items {
+    flex-direction: column; /* Stack items vertically */
+    width:100%;
+    max-width: 100%; /* Full width for mobile */
+    padding-top: 10px; /* Add some padding */
+    margin: 0;
+    
+
+  }
+
+  .navbar-items.open {
+    display: flex; /* Show items when open */
+    
+  }
+  
+}
