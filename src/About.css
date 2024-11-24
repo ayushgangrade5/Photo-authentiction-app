@@ -1,0 +1,53 @@
+/* Container styling */
+.container2 {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #fff;
+  background-color: #0d47a1; /* Dark blue background */
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Title styling */
+.title {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #fff;
+}
+
+/* Vision text */
+.vision {
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 20px 0;
+  color: #bbdefb; /* Light blue color */
+}
+
+/* Section styling */
+.section {
+  margin: 20px 0;
+}
+
+/* Subtitle styling */
+.subtitle {
+  font-size: 1.8rem;
+  color: #90caf9; /* Light blue for subtitle */
+  margin-bottom: 10px;
+}
+
+/* Text styling */
+.text {
+  font-size: 1rem;
+  color: #e3f2fd; /* Very light blue for readability */
+  line-height: 1.6;
+}
+
+/* Footer styling */
+.footer {
+  margin-top: 30px;
+  padding-top: 10px;
+  border-top: 1px solid #bbdefb;
+  text-align: center;
+  color: #e1f5fe;
+}

@@ -1,0 +1,109 @@
+/* Main container styling */
+.contact-container {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #0078d7, #00aaff);
+    padding: 1em;
+  }
+  
+  .contact-form {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 2em;
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: transform 0.3s;
+  }
+  
+  .contact-form:hover {
+    transform: translateY(-3px);
+  }
+  
+  .contact-heading {
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #00d724;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  
+  /* Input fields styling */
+  .contact-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1.5em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    transition: all 0.3s;
+  }
+  
+  .contact-input:focus {
+    border-color: #0078d7;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(0, 120, 215, 0.3);
+  }
+  
+  /* Submit button styling */
+  .contact-button {
+    width: 100%;
+    padding: 12px;
+    background: #0078d7;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .contact-button:hover {
+    background: #005f9e;
+  }
+  
+  .contact-button:disabled {
+    background: #b0c4de;
+    cursor: not-allowed;
+  }
+  /* Status message styles */
+.status-message {
+    margin-top: 1em;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .status-message.success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+  }
+  
+  .status-message.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+  }
+  
+  
+  /* Media query for responsiveness */
+  @media (max-width: 480px) {
+    .contact-form {
+      padding: 1.5em;
+      margin: 0 1em;
+    }
+  
+    .contact-input, .contact-button {
+      font-size: 0.9em;
+    }
+  }
+  
