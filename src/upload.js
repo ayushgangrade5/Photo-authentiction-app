@@ -3,6 +3,7 @@ import HashPhoto from "./hashing";
 import { v4 as uuidv4 } from "uuid";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { imgDB, hashDB } from "./firebase";
 import SearchHash from "./searchimg";
 import './Photoupload.css'; // Import the CSS file
@@ -12,7 +13,7 @@ const PhotoUpload = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [imageData, setImageData] = useState(null);
   const [hash, setHash] = useState(null);
-
+  const[MessageCheck,setMessageCheck] =useState(false)
   const handleFileChange = (event) => {
     setHash(null);
     const file = event.target.files?.[0];
@@ -40,7 +41,22 @@ const PhotoUpload = () => {
   const handleHashGenerated = (generatedHash) => {
     setHash(generatedHash);
   };
-
+  const handleCheck = async () => {
+    const q = query(
+      collection(hashDB, "images"),
+      where("imageHash", "==", hash)
+    );
+    try {
+      const querySnapshot = await getDocs(q);
+      const firstDoc = querySnapshot.docs[0].data();
+      setMessageCheck(true);
+      console.log(firstDoc.imageHash, "handle search working");
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      handleUpload();
+    }
+    
+  };
   const handleUpload = async () => {
     if (selectedFile && hash) {
       const uniqueID = uuidv4();
@@ -65,20 +81,21 @@ const PhotoUpload = () => {
   return (
     <div className="container">
       <div className="left">
-        <h2>Upload a Photograph</h2>
+        <h2 className="heading-upload">Upload a Photograph</h2>
         <input type="file" id="upImg" onChange={handleFileChange} accept="image/*" />
+        <div className="image-preview">
         {imagePreview && (
-          <div>
-            <img src={imagePreview} alt="Preview" style={{ maxWidth: "100%", maxHeight: "200px" }} />
-          </div>
+            <img className="imgpre" src={imagePreview} alt="Preview"  />
         )}
+        </div>
         <HashPhoto file={imageData} onHashGenerated={handleHashGenerated} />
-        <button className="upbtn"onClick={handleUpload} disabled={!hash}>Upload Image with Hash</button>
-        
+        <button className="upbtn"onClick={handleCheck} disabled={!hash}>Upload Image with Hash</button> 
+        {MessageCheck && (
+          <h3> This photograph Exists ! , upload another photograph</h3>
+        )}
       </div>
-      <div className="right">
-        
-        <SearchHash />
+      <div className="right"> 
+      <SearchHash />
       </div>
     </div>
   );

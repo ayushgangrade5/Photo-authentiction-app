@@ -1,1 +1,46 @@
-.h5{font-family:'Franklin Gothic Medium'}
+.Show-hash-date {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 500px;
+    margin-bottom: 20px ;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .Show-hash-date h5 {
+    word-wrap: break-word;
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+  }
+  
+  .Show-hash-date h3 {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #007BFF;
+    font-weight: 600;
+    text-align: left;
+  }
+  
+  @media (max-width: 768px) {
+    .Show-hash-date {
+      padding: 10px;
+      font-size: 10px;
+      max-width:max-content;
+    }
+  
+    .Show-hash-date h5 {
+      font-size: 10px;
+    }
+  
+    .Show-hash-date h3 {
+      font-size: 14px;
+    }
+  }
+  

@@ -22,7 +22,7 @@ const HashPhoto = ({ file, onHashGenerated }) => {
   }/${currentDate.getFullYear()}`;
 
   return (
-    <div>
+    <div className="Show-hash-date">
       <h5>Hash of the photo is: {hash}</h5>
       <h3>Date: {formattedDate}</h3>
     </div>

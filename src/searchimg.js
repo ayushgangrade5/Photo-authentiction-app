@@ -76,7 +76,7 @@ function SearchHash() {
 
   return (
     <div>
-      <h2> Verify your image</h2>
+      <h2 className="search-heading"> Verify your image</h2>
       <input
         type="file"
         placeholder="Search..."
@@ -92,9 +92,6 @@ function SearchHash() {
             // style={{ maxWidth: "100%", maxHeight: "auto" }}
           />
       )}
-      <div className="image-overlay">
-
-      </div>
       </div>
       <button className="chkbtn"onClick={handleSearch}disabled={!previewSearchFile}>CHECK PHOTO</button>
       {messageDis &&(

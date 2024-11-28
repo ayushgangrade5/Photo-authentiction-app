@@ -6,8 +6,8 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import{getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
 import {app} from "./firebase";
-import { useNavigate,BrowserRouter as Router  } from 'react-router-dom';
-import UserProfile from './UserProfile';
+import { useNavigate  } from 'react-router-dom';
+// import UserProfile from './UserProfile';
 const auth= getAuth(app);
 function Example({modalShow,setModalShow}) {
 const [Email,setEmail]= useState("");

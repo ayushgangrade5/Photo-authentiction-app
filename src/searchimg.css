@@ -17,29 +17,31 @@
 .searchIp{
     border-right: 10px;
 }
-
+.search-heading{
+    font-family: 'Roboto', Arial, sans-serif; /* Use modern and readable font */
+    font-size: 2rem; /* Adjust size for clear visibility */
+    font-weight: bold; /* Makes the heading prominent */
+    color: #007bff; /* A pleasing blue color */
+    margin: 20px 0; /* Adds spacing above and below */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    letter-spacing: 1px; /* Slight spacing for a clean look */
+}
 .searchPreview{
     margin: 25px;
     position: relative;
-    width: 300px; /* Set the width of the box */
-    border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Hide overflow */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    background-color: #ffffff; /* White background for the box */
+    width:fit-content;
+    
+    border-radius: 10px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; 
     border-right: 10px;
 }
 
-.image-overlay {
-    position: absolute;
-    bottom: 1;
-    left: 0;
-    right: 0;
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent overlay */
-    padding: 10px; /* Padding inside the overlay */
-    text-align: center; /* Center text */
-}
 
 .imgst{
-    width: 100%; /* Make image responsive */
+     /* Make image responsive */
     height: auto; /* Maintain aspect ratio */
+    max-width: 100%;
+    max-height: 200px;
 }
