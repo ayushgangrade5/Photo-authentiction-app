@@ -26,7 +26,7 @@
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   letter-spacing: 1px; /* Slight spacing for a clean look */
   }
-  input[type="file"] {
+  .upImg {
     /* display: block;
     padding: 8px 12px;
     font-size: 16px;
@@ -48,7 +48,7 @@
     transition: background-color 0.3s ease;
   }
   
-  input[type="file"]:hover {
+  .upImg:hover {
     border-color: #bbb;
     background-color: #357ABD;
   }
@@ -106,6 +106,24 @@
   
   .image-preview img:hover {
     transform: scale(1.05);
+  }
+  .checkMessage{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin:20px;
+    padding: 10px;
+    color: rgb(175, 5, 5);
+    animation: blink 0.90s step-start infinite
+  }
+  .successful-Upload{
+    color: green;
+    margin:20px;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0; /* Text disappears midway */
+    }
   }
   /* Responsive adjustments */
   @media (max-width: 768px) {

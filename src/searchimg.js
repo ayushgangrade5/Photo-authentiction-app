@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect,useRef,useCallback} from "react";
 import { hashDB } from "./firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { SHA256 } from "crypto-js";
@@ -11,11 +11,12 @@ function SearchHash() {
   const[messageDis,setmessageDis]=useState(false);
   // const [searchFile, setSearchFile] = useState(null);
   const [previewSearchFile, setPreviewSearchFile] = useState(null);
+  const headerRef = useRef();
 
   const handleFileChange = (event) => {
     const file = event.target.files?.[0];
     setResults([]);
-    setmessageDis(false)
+    setmessageDis(false);
     if (file) {
       const previewUrl = URL.createObjectURL(file);
       setPreviewSearchFile(previewUrl);
@@ -36,19 +37,17 @@ function SearchHash() {
       setImageData(null);
     }
   };
-  const hashOfImage = () => {
+  const hashOfImage = useCallback(() => {
     if (imageData) {
       const base64s = btoa(imageData);
       const toHash = SHA256(base64s);
       const searchHash = toHash.toString();
       setSearchTerm(searchHash);
     }
-  };
+  }, [imageData]);
   useEffect(() => {
-    if (imageData) {
-      hashOfImage();
-    }
-  }, );
+    hashOfImage();
+  }, [hashOfImage]);
   const handleSearch = async () => {
     const q = query(
       collection(hashDB, "images"),
@@ -64,21 +63,37 @@ function SearchHash() {
       console.error("Error fetching data:", error);
       setmessageDis(true)
     }
-    
   };
-  // useEffect(() => {
-  //   if (searchTerm) {
-  //     handleSearch();
-  //   } else {
-  //     setResults([]);
-  //   }
-  // }, [searchTerm]);
+  const changeMessageDisText = useCallback(() => {
+    if (headerRef.current) {
+      if (!previewSearchFile) {
+        headerRef.current.textContent = "Please choose a photograph to verify.";
+        headerRef.current.className = "choose-photo-message";
+      } else if (results.imageHash) {
+        headerRef.current.textContent =
+          "The photograph is intact and unaltered.";
+          headerRef.current.className = "intact-photo-message";
+      } else if (messageDis) {
+        headerRef.current.textContent =
+          "The photograph has been tampered with or is not uploaded.";
+          headerRef.current.className = "tampered-photo-message";
+      } else {
+        headerRef.current.textContent = "";
+      }
+    }
+  }, [previewSearchFile, results, messageDis]);
+
+  
+  useEffect(() => {
+   changeMessageDisText()
+  }, [changeMessageDisText]);
 
   return (
     <div>
       <h2 className="search-heading"> Verify your image</h2>
       <input
         type="file"
+        className="SearchSelect"
         placeholder="Search..."
         accept="image/*"
         onChange={handleFileChange}
@@ -94,15 +109,7 @@ function SearchHash() {
       )}
       </div>
       <button className="chkbtn"onClick={handleSearch}disabled={!previewSearchFile}>CHECK PHOTO</button>
-      {messageDis &&(
-        <h3> Photograph is either not uploaded or it is temperd </h3>
-      )}
-      {results.imageHash && (
-        <div>
-          {" "}
-          <h3>The Photograph is intact without any changes</h3>
-        </div>
-      )}
+      <h3 ref={headerRef}aria-live="polite"> prcocessing...</h3>
     </div>
   );
 }
