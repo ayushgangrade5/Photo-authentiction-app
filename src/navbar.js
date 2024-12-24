@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 import { Route, Link, Routes, BrowserRouter as Router } from "react-router-dom";
 import About from "./About";
 import { useState } from "react";
-import Example from "./signup";
+import SignInSignUp from "./SignIn-SignUp";
 import UserProfile from "./UserProfile";
 import './navbar.css';
 
@@ -56,7 +56,7 @@ function ColorSchemesExample() {
         <Route path="/UserProfile" element={<UserProfile />} />
       </Routes>
       {modalShow && (
-        <Example setModalShow={setModalShow} modalShow={modalShow} />
+        <SignInSignUp setModalShow={setModalShow} modalShow={modalShow} />
       )}
     </Router>
   );
